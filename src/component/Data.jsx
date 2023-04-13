@@ -35,7 +35,6 @@ const Data = () => {
                           <p className="card-text">{value.pera}</p>
                         </div>
                       </div>
-                    
                   </div>
                 </>
               )

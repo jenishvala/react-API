@@ -13,27 +13,24 @@ const Login = () => {
         const storedFormData = localStorage.getItem('formData');
 
         if (storedFormData) {
-            setFormData(JSON.parse(storedFormData));
+            window.location.href = "/call";
         }
-    }, []);
+    },[]);
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        window.location.href ="/call";
-        const validationErrors = validateForm(formData);
 
+        const validationErrors = validateForm(formData);
+        
         if (Object.keys(validationErrors).length === 0) {
             localStorage.setItem('formData', JSON.stringify(formData));
             setErrors({});
+            window.location.href = "/call";
         } else {
             setErrors(validationErrors);
         }
-        setFormData({
-            email: '',
-            password: '',
-        })
-
+        
     }
 
     const validateForm = (data) => {
@@ -69,24 +66,24 @@ const Login = () => {
 
     return (
         <>
-            
-                <form  onSubmit={handleSubmit} >           
-                    <div className='container'>
-                        <div className="mb-3 mt-5">
-                            {/* <label htmlfor="exampleInputEmail1" className="form-label">Email address</label> */}
-                            <input type="email" name="email" className="form-control" value={formData.email} id="exampleInputEmail1" onChange={handleInputChange} placeholder='email' />
-                            {<span style={{ color: "red" }}>{errors.email}</span>}
-                        </div>
-                        <div className="mb-3">
-                            {/* <label htmlfor="exampleInputPassword1" className="form-label">Password</label> */}
-                            <input type="password" className="form-control" name="password" value={formData.password} id="exampleInputPassword1" onChange={handleInputChange} placeholder='password' />
-                            {<span style={{ color: "red" }}>{errors.password}</span>}
 
-                        </div>
-
-                        <button type="submit" className="btn btn-primary">Submit</button>
+            <form onSubmit={handleSubmit} >
+                <div className='container'>
+                    <div className="mb-3 mt-5">
+                        {/* <label htmlfor="exampleInputEmail1" className="form-label">Email address</label> */}
+                        <input type="email" name="email" className="form-control" value={formData.email} id="exampleInputEmail1" onChange={handleInputChange} placeholder='email' />
+                        {<span style={{ color: "red" }}>{errors.email}</span>}
                     </div>
-                </form>
+                    <div className="mb-3">
+                        {/* <label htmlfor="exampleInputPassword1" className="form-label">Password</label> */}
+                        <input type="password" className="form-control" name="password" value={formData.password} id="exampleInputPassword1" onChange={handleInputChange} placeholder='password' />
+                        {<span style={{ color: "red" }}>{errors.password}</span>}
+
+                    </div>
+
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </>
 
         // <>
