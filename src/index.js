@@ -9,6 +9,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './index.css';
 import Login from './component/Login';
 import Error from './component/Error';
+import firebase from './component/firebase';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

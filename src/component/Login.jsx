@@ -31,7 +31,7 @@ const Login = () => {
             setErrors(validationErrors);
         }
         
-    }
+    }           
 
     const validateForm = (data) => {
         let errors = {};
